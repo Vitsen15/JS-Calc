@@ -40,11 +40,11 @@ function Neg () {
             buf === '%' ||  
             buf === '*') {
                 
-                shiftRight(i, '-');
+                shiftRight(i+1, '-');
                 console.log(expr);
                 return;
             }
-        if (i == 0){
+        if (i === 0){
             shiftRight(i, '-');
             console.log(expr);
             return;
@@ -63,7 +63,7 @@ function shiftRight (pos , symb){
     for (var i = expArr.length-1; i > pos; i--){
         expArr[i] = expArr[i-1];
     }
-    expArr[pos+1] = symb;
+    expArr[pos] = symb;
     expr = expArr.join('');
 }
 
