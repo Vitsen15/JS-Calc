@@ -10,13 +10,14 @@
             <form name="calc" action="">
                  <table class="tblCalc" cellpadding=0 cellspacing=0>
                  <tr>
+                     
+                 </tr>
+                 <tr>
                      <td colspan=3 align=middle>
                         <input id="editWide" name="ReadOut" type="Text"
                             size=28 value="0" width="250px">
                      </td>
-                 </tr>
-                 <tr>
-                     <td colspan="3"></td>
+                     
                      <td><input name="btnClear" type="Button"
                         value="C" onclick="Clear()" /></td>
                      <td><input name="btnClearEntry" type="Button"
@@ -55,7 +56,8 @@
                         value="3" onclick="NumPressed(3)"></td>
                      <td><input name="btnPercent" type="Button"
                         value="%" onclick="Operation('%')" /></td>
-                     <td align=middle>&nbsp;</td>
+                     <td><input name="sqrt" type="Button"
+                        value='sqrt()' onclick="Operation('sqrt')" /></td>
                  </tr>
                  <tr>
                      <td><input name="btnZero" type="Button"

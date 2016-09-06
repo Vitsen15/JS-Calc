@@ -8,13 +8,14 @@
  	}
  	.tblCalc input{
  		border:1px solid gray;
- 		width:30px;
+        height: 25px;
+ 		width:50px;
  		margin:4px;
  	}
 	 	#btnWide{
- 		width:80px;
+ 		width:110px;
  	}
  	#editWide{
- 		width:250px;
+ 		width:150px;
  	}
 </style>

@@ -4,8 +4,12 @@ var expr = '';
 //var operArr = ['+', '-', '*', '/', '%'];
 
 function NumPressed (symb) {
-        
-    calcForm.ReadOut.value = symb;
+    
+    if(calcForm.ReadOut.value === '0'){
+        calcForm.ReadOut.value = '';
+    }
+    console.log(calcForm.ReadOut.value);
+    calcForm.ReadOut.value += symb;
     expr = expr + symb;
     console.log(expr);    
              
@@ -13,6 +17,8 @@ function NumPressed (symb) {
 
 
 function Neg () {
+    
+    
     
     var expArr = expr.split('');
     
@@ -25,6 +31,7 @@ function Neg () {
             expArr[i] = '+';
             expr = expArr.join('');
             console.log(expr);
+            calcForm.ReadOut.value = expr;
             return;
         }
     
@@ -33,6 +40,7 @@ function Neg () {
                 expArr[i] = '-';
                 expr = expArr.join('');
                 console.log(expr);
+                calcForm.ReadOut.value = expr;
                 return;
             }
         if( buf === '*' ||
@@ -41,12 +49,14 @@ function Neg () {
                 
                 shiftRight(i+1, '-');
                 console.log(expr);
+                calcForm.ReadOut.value = expr;
                 return;
             }
         if (i === 0){
             expArr.unshift('-');
             expr = expArr.join('');
             console.log(expr);
+            calcForm.ReadOut.value = expr;
             return;
         }
         
@@ -69,9 +79,14 @@ function shiftRight (pos , symb){
 
 function Operation (operation){
     
+    
+    
     if (operation === '='){
         
         console.log(eval(expr));
+        calcForm.ReadOut.value = eval(expr);
+        expr = '';
+        return;
         
     }
     
@@ -86,6 +101,7 @@ function Operation (operation){
         expArr[expArr.length-1] = operation;
         expr = expArr.join('');
         console.log(expr);
+        calcForm.ReadOut.value += operation;
         return;
     }
     
@@ -93,5 +109,57 @@ function Operation (operation){
     expArr.push(operation);
     expr = expArr.join('');
     console.log(expr);
+    calcForm.ReadOut.value += operation;
     
 }
+
+
+function ClearEntry() {
+    
+    expr = '';
+    calcForm.ReadOut.value = '0';
+    
+}
+
+
+function Clear() {
+    var expArr = expr.split('');
+    for (var i = expArr.length-1; i <= 0; i--){
+        var buf = expArr[i];
+        if (buf === '*' ||
+            buf === '/' ||
+            buf === '%' || 
+            buf === '+' ||
+            buf === '-' ) {
+            for (var j = i; j >= expArr.length; j++)
+                expArr.pop();
+        }
+    }
+    console.log(expr);
+    expr = expArr.join('');
+    calcForm.ReadOut.value = expr;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
