@@ -8,6 +8,9 @@ function NumPressed (symb) {
     if(calcForm.ReadOut.value === '0'){
         calcForm.ReadOut.value = '';
     }
+    
+    //expArr = expr.split('');
+    
     console.log(calcForm.ReadOut.value);
     calcForm.ReadOut.value += symb;
     expr = expr + symb;
@@ -78,14 +81,24 @@ function shiftRight (pos , symb){
 }
 
 function Operation (operation){
-    
-    
+        
+        calcForm.ReadOut.value = '0';
     
     if (operation === '='){
+    
+        if (eval(expr) === undefined) {
+            calcForm.ReadOut.value = '0';
+            return;
+        }
+        
+        if (eval(expr) === Infinity){
+            calcForm.ReadOut.value = 'Zero devide!!!';
+            return;
+        }
         
         console.log(eval(expr));
         calcForm.ReadOut.value = eval(expr);
-        expr = '';
+        expr = eval(expr).toString();
         return;
         
     }
@@ -98,10 +111,11 @@ function Operation (operation){
         buf === '%' || 
         buf === '+' ||
         buf === '-' ) {
+        
         expArr[expArr.length-1] = operation;
         expr = expArr.join('');
         console.log(expr);
-        calcForm.ReadOut.value += operation;
+        //calcForm.ReadOut.value += operation;
         return;
     }
     
@@ -109,7 +123,7 @@ function Operation (operation){
     expArr.push(operation);
     expr = expArr.join('');
     console.log(expr);
-    calcForm.ReadOut.value += operation;
+    //calcForm.ReadOut.value += operation;
     
 }
 
@@ -123,21 +137,38 @@ function ClearEntry() {
 
 
 function Clear() {
+    
     var expArr = expr.split('');
-    for (var i = expArr.length-1; i <= 0; i--){
+    for (var i = expArr.length-1; i >= 0; i--){
         var buf = expArr[i];
         if (buf === '*' ||
             buf === '/' ||
             buf === '%' || 
             buf === '+' ||
-            buf === '-' ) {
-            for (var j = i; j >= expArr.length; j++)
+            buf === '-' ||
+            i === 0) {
+            (function () {
+                for (var j = i; j <= expArr.length; j++)
                 expArr.pop();
+            }())
+            expr = expArr.join('');
+            console.log(expr);
+            calcForm.ReadOut.value = '0';
+            return;
         }
     }
-    console.log(expr);
-    expr = expArr.join('');
-    calcForm.ReadOut.value = expr;
+    
+    
+}
+
+
+function sqrt() {
+    
+    var expeArr = expr.split('');
+    
+    for (var i = expeArr.length-1; i >=0; i--){
+        
+    }
     
 }
 
