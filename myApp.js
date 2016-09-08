@@ -119,6 +119,35 @@ function Operation (operation){
         return;
     }
     
+    if (operation === 'sqrt'){(function () {
+
+        var expArr = expr.split('');
+        
+        for (var i = expArr.length-1; i >=0; i--){
+            var buf = expArr[i];
+            var sqrtExpr = '';
+            
+            if (buf === '*' ||
+                buf === '/' ||
+                buf === '%' || 
+                buf === '+' ||
+                buf === '-' ) {
+
+                for (var j = i+1; j <= expArr.length-1; j++) sqrtExpr += expeArr[j];
+
+            }
+            
+            sqrtExpr = Math.sqrt(sqrtExpr);
+            expArr.length = i+1;
+            expr = expArr.join('');
+            this.expr += sqrtExpr;
+            console.log(expr);
+            calcForm.ReadOut.value = sqrtExpr;
+        }
+
+        }())
+    }
+    
     
     expArr.push(operation);
     expr = expArr.join('');
@@ -147,10 +176,11 @@ function Clear() {
             buf === '+' ||
             buf === '-' ||
             i === 0) {
-            (function () {
-                for (var j = i; j <= expArr.length; j++)
-                expArr.pop();
-            }())
+//            (function () {
+//                for (var j = i; j <= expArr.length; j++)
+//                expArr.pop();
+//            }())
+            expArr.length = i;
             expr = expArr.join('');
             console.log(expr);
             calcForm.ReadOut.value = '0';
@@ -162,15 +192,7 @@ function Clear() {
 }
 
 
-function sqrt() {
-    
-    var expeArr = expr.split('');
-    
-    for (var i = expeArr.length-1; i >=0; i--){
-        
-    }
-    
-}
+
 
 
 
