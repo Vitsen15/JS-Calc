@@ -131,28 +131,35 @@ function Operation (operation){
                 buf === '/' ||
                 buf === '%' || 
                 buf === '+' ||
-                buf === '-' ) {
+                buf === '-' ||
+                i === 0) {
 
-                for (var j = i+1; j <= expArr.length-1; j++) sqrtExpr += expeArr[j];
-
+                for (var j = i+1; j <= expArr.length-1; j++) sqrtExpr += expArr[j];
+                break;
+                
             }
             
-            sqrtExpr = Math.sqrt(sqrtExpr);
+            
+        }
+
+        
+        sqrtExpr = Math.sqrt(sqrtExpr);
             expArr.length = i+1;
             expr = expArr.join('');
             this.expr += sqrtExpr;
             console.log(expr);
             calcForm.ReadOut.value = sqrtExpr;
-        }
-
+        
         }())
+    
+        return;
+    
     }
     
     
     expArr.push(operation);
     expr = expArr.join('');
     console.log(expr);
-    //calcForm.ReadOut.value += operation;
     
 }
 
@@ -169,22 +176,22 @@ function Clear() {
     
     var expArr = expr.split('');
     for (var i = expArr.length-1; i >= 0; i--){
+        
         var buf = expArr[i];
+        
         if (buf === '*' ||
             buf === '/' ||
             buf === '%' || 
             buf === '+' ||
             buf === '-' ||
             i === 0) {
-//            (function () {
-//                for (var j = i; j <= expArr.length; j++)
-//                expArr.pop();
-//            }())
+
             expArr.length = i;
             expr = expArr.join('');
             console.log(expr);
             calcForm.ReadOut.value = '0';
             return;
+            
         }
     }
     
