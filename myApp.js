@@ -1,15 +1,12 @@
 
 var calcForm = document.calc;
 var expr = '';
-//var operArr = ['+', '-', '*', '/', '%'];
 
 function NumPressed (symb) {
     
     if(calcForm.ReadOut.value === '0'){
         calcForm.ReadOut.value = '';
     }
-    
-    //expArr = expr.split('');
     
     console.log(calcForm.ReadOut.value);
     calcForm.ReadOut.value += symb;
@@ -46,6 +43,7 @@ function Neg () {
                 calcForm.ReadOut.value = expr;
                 return;
             }
+        
         if( buf === '*' ||
             buf === '/' ||
             buf === '%' ) {
@@ -55,7 +53,9 @@ function Neg () {
                 calcForm.ReadOut.value = expr;
                 return;
             }
+        
         if (i === 0){
+            
             expArr.unshift('-');
             expr = expArr.join('');
             console.log(expr);
@@ -115,7 +115,6 @@ function Operation (operation){
         expArr[expArr.length-1] = operation;
         expr = expArr.join('');
         console.log(expr);
-        //calcForm.ReadOut.value += operation;
         return;
     }
     
@@ -142,7 +141,6 @@ function Operation (operation){
             
         }
 
-        
         sqrtExpr = Math.sqrt(sqrtExpr);
             expArr.length = i+1;
             expr = expArr.join('');
@@ -152,8 +150,7 @@ function Operation (operation){
         
         }())
     
-        return;
-    
+        return; 
     }
     
     
@@ -197,29 +194,3 @@ function Clear() {
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
