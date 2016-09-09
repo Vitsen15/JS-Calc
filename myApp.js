@@ -19,7 +19,7 @@
     }
 
 
-    ns.Neg = function () {
+    ns.Neg = function() {
 
 
 
